@@ -25,29 +25,42 @@ export default function AllRecipes() {
   );
 
   return (
-    <>
-      <div className="title">
-        <h1>ReciBook</h1>
-        <p>All recipes</p>
+    <div className="recipes-page">
+      <div className="recipes-header">
+        <h1>All Recipes</h1>
+        <p>Browse your saved recipes</p>
+
+        <div className="search">
+          <input
+            type="text"
+            placeholder="Search recipes..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
       </div>
 
-      <div className="search">
-        <input
-          type="text"
-          placeholder="Search recipes..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </div>
+      <div className="recipes-grid">
+        {filteredRecipes.map((r) => (
+          <div key={r.id} className="recipe-card">
+            <h3>{r.title}</h3>
 
-      {/* DISPLAY CARDS SIDE BY SIDE */}
-      <div className="recipe">
-        <div className="recipe1">
-          {filteredRecipes.map((r) => (
-            <div key={r.id} className="recipe-card">
-              <p className="recipe-title">{r.title}</p>
+            {r.imageUrl && (
+              <img
+                src={r.imageUrl}
+                alt={r.title}
+                style={{
+                  width: "100%",
+                  height: "160px",
+                  objectFit: "cover",
+                  borderRadius: "12px",
+                  marginBottom: "10px",
+                }}
+              />
+            )}
 
-              <Link className="b3" to={`/view/${r.id}`}>
+            <div className="card-actions">
+              <Link className="b1" to={`/view/${r.id}`}>
                 View
               </Link>
 
@@ -55,9 +68,9 @@ export default function AllRecipes() {
                 Delete
               </button>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-    </>
+    </div>
   );
 }
