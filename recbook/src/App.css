@@ -1,42 +1,83 @@
-#root {
-  max-width: 1280px;
+/* src/App.css */
+/*Tailwind base, components, and utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*custom CSS*/
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: rgba(199, 103, 103, 0.87);
+  background-color: #ffffff;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  align-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.header {
+  background-color: #d43e3e;
+  width: 100vw;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.b1, .b2, .b3 {
+  background-color: transparent;
+}
+
+.title {
+  width: 300px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.recipe {
+  background-color: #ffd8d8;
+  width: 100vw;
+  height: 525px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.recipe1 {
+  margin-bottom: 300px;
+  background-color: #be9a9a;
+  padding: 15px;
+  border-radius: 10px;
+  width: 250px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
 }
-
-.card {
-  padding: 2em;
+button:hover {
+  border-color: #646cff;
 }
-
-.read-the-docs {
-  color: #888;
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
 }

@@ -1,11 +1,19 @@
+/* index.css or App.css */
+
+/*Tailwind base, components, and utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*custom CSS*/
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: rgba(199, 103, 103, 0.87);
+  background-color: #ffffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -26,13 +34,76 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
+  justify-content: center;
+  align-items: center;
   min-width: 320px;
   min-height: 100vh;
+}
+
+.header {
+  background-color: #d43e3e;
+  width: 100vw;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px; 
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+.b1 {
+  background-color: transparent;
+}
+
+.b2 {
+  background-color: transparent;
+}
+
+.b3 {
+  background-color: transparent;
+  padding: 0%;
+  color: black;
+}
+
+.title {
+  width: 300px;
+  margin: auto;
+  text-align: center;
+  font-size: large;
+  font-style: italic;
+}
+
+.recipe {
+  background-color: #ffd8d8;
+  width: 100vw;
+  height: 525px;
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+}
+
+.recipe1 {
+ margin-bottom: 300px;
+ background-color: #be9a9a;
+ padding: 15px;
+ padding-top: 50px;
+ border-radius: 10px;
+ width: 250px;
+ text-align: center;
+ position: relative;
+ top: 100px;
+ color: black; 
+ font-style: oblique;
+ font-size: large;
+}
+
+.img {
+  width: 100px;
+  height: 100px;
 }
 
 button {
@@ -45,6 +116,7 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  font-size: medium;
 }
 button:hover {
   border-color: #646cff;
@@ -65,4 +137,23 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+.recipe1 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.recipe-card {
+  border: 1px solid #000000;
+  padding: 15px;
+  border-radius: 10px;
+  width: 250px;      /* fixed width */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background: #fff;
+}
+
+.recipe-title {
+  font-weight: bold;
+  margin-bottom: 10px;
 }
