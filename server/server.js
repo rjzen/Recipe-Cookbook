@@ -68,10 +68,23 @@ app.get("/api/recipes", (req, res) => {
 });
 
 app.get("/api/recipes/:id", (req, res) => {
-  db.get("SELECT * FROM recipes WHERE id=?", [req.params.id], (err, row) => {
-    res.json(row);
-  });
+  db.get(
+    "SELECT * FROM recipes WHERE id=?",
+    [req.params.id],
+    (err, row) => {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+
+      if (!row) {
+        return res.status(404).json({ error: "Recipe not found" });
+      }
+
+      res.json(row);
+    }
+  );
 });
+
 
 // Update a recipe
 app.put("/api/recipes/:id", apiKeyAuth, (req, res) => {

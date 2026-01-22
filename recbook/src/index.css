@@ -214,10 +214,10 @@ h1 {
 .add-recipe-container1 {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: calc(100vh - 70px);
   padding: 20px;
-  padding-top: 170px;
+  padding-top: 90px;
 }
 
 .add-recipe-card {
@@ -319,3 +319,38 @@ h1 {
     background-color: #f9f9f9;
   }
 }
+
+// Back Button
+.backBtn {
+  margin-bottom: 20px;
+  background: transparent;
+  border: none;
+  color: #646cff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    color 0.25s ease,
+    transform 0.2s ease;
+}
+
+//FOOTER
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.recipes-page {
+  flex: 1;                 /* takes all available space */
+  padding: 20px 30px;
+}
+
+.app-footer {
+  width: 100%;
+  text-align: center;
+  padding: 3px;
+  background: #dc2626;
+  color: #fff;
+}
+

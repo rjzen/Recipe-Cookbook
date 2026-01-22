@@ -9,7 +9,7 @@ export default function ViewRecipe() {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
-  const [imageUrl, setImageUrl] = useState("");  // <-- ADD THIS
+  const [imageUrl, setImageUrl] = useState(""); 
 
   useEffect(() => {
     load();
@@ -20,7 +20,7 @@ export default function ViewRecipe() {
     setTitle(data.title);
     setIngredients(data.ingredients);
     setInstructions(data.instructions);
-    setImageUrl(data.imageUrl);   // <-- ADD THIS
+    setImageUrl(data.imageUrl); 
   };
 
   const handleUpdate = async () => {
