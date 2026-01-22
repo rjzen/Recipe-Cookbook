@@ -39,7 +39,7 @@ export default function AllRecipes() {
           />
         </div>
       </div>
-
+      
       <div className="recipes-grid">
         {filteredRecipes.map((r) => (
           <div key={r.id} className="recipe-card">
@@ -60,7 +60,7 @@ export default function AllRecipes() {
             )}
 
             <div className="card-actions">
-              <Link className="b1" to={`/view/${r.id}`}>
+              <Link className="b3" to={`/view/${r.id}`}>
                 View
               </Link>
 

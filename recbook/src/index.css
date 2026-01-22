@@ -98,6 +98,11 @@ h1 {
   transform: translateY(-1px);
 }
 
+.b1:hover,
+.b2:hover {
+  color: #ffffff;
+} 
+
 .b3:hover {
   color: #dc2626;
 }
