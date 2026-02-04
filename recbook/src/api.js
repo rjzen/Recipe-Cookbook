@@ -29,7 +29,10 @@ export async function getRecipe(id) {
 export async function createRecipe(data) {
   const res = await fetch(API_URL, {
     method: "POST",
-    headers,
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": "supersecret123",
+    },
     body: JSON.stringify(data),
   });
   return await res.json();

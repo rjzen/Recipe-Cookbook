@@ -18,7 +18,8 @@ db.run(`
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT,
     ingredients TEXT,
-    instructions TEXT
+    instructions TEXT,
+    imageUrl TEXT
   )
 `);
 
@@ -29,17 +30,24 @@ app.get("/", (req, res) => {
 
 // Create a new recipe
 app.post("/api/recipes", apiKeyAuth, (req, res) => {
-  const { title, ingredients, instructions } = req.body;
+  const { title, ingredients, instructions, imageUrl } = req.body;
+
   db.run(
-    "INSERT INTO recipes (title, ingredients, instructions) VALUES (?, ?, ?)",
-    [title, ingredients, instructions],
-    function () {
+    "INSERT INTO recipes (title, ingredients, instructions, imageUrl) VALUES (?, ?, ?, ?)",
+    [title, ingredients, instructions, imageUrl],
+    function (err) {
+      if (err) {
+        console.error("DB ERROR:", err.message);
+        return res.status(500).json({ error: err.message });
+      }
+
       res.json({ id: this.lastID });
     }
   );
 });
 
-// Get all recipes
+
+// Get all recipes (with search)
 app.get("/api/recipes", (req, res) => {
   const q = req.query.q;
 
@@ -60,17 +68,30 @@ app.get("/api/recipes", (req, res) => {
 });
 
 app.get("/api/recipes/:id", (req, res) => {
-  db.get("SELECT * FROM recipes WHERE id=?", [req.params.id], (err, row) => {
-    res.json(row);
-  });
+  db.get(
+    "SELECT * FROM recipes WHERE id=?",
+    [req.params.id],
+    (err, row) => {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+
+      if (!row) {
+        return res.status(404).json({ error: "Recipe not found" });
+      }
+
+      res.json(row);
+    }
+  );
 });
+
 
 // Update a recipe
 app.put("/api/recipes/:id", apiKeyAuth, (req, res) => {
-  const { title, ingredients, instructions } = req.body;
+  const { title, ingredients, instructions, imageUrl } = req.body;
   db.run(
-    "UPDATE recipes SET title=?, ingredients=?, instructions=? WHERE id=?",
-    [title, ingredients, instructions, req.params.id],
+    "UPDATE recipes SET title=?, ingredients=?, instructions=?, imageUrl=? WHERE id=?",
+    [title, ingredients, instructions, imageUrl, req.params.id],
     () => res.json({ updated: true })
   );
 });
